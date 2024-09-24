@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+ <html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="2024-09-24 11:04:01" name="revised"><title>OOBE</title><link as="style" rel="stylesheet preload prefetch" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"/><link as="style" comment="font-awesome" rel="stylesheet preload prefetch" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/><script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/vis-data@7.1.9/peer/umd/vis-data.min.js" type="text/javascript"></script><link as="style" rel="stylesheet preload prefetch" type="text/css" href="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/styles/vis-network.min.css"/><script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/peer/umd/vis-network.min.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/gh/evotecit/cdn@0.0.27/JS/vis-network.loadingbar.min.js" type="text/javascript"></script><link as="style" rel="stylesheet preload prefetch" type="text/css" href="https://cdn.jsdelivr.net/gh/evotecit/cdn@0.0.27/CSS/vis-network.loadingbar.min.css"/><style type="text/css">body {    font-family: 'Roboto Condensed', sans-serif;    font-size: 8pt;    margin: 0px;}input {    font-size: 8pt;}.main-section {    margin-top: 0px;}</style><style type="text/css">.defaultPanel {    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);    transition: 0.3s;    border-radius: 5px;    margin: 5px;}</style><style type="text/css">.overflowHidden {    overflow: hidden;    overflow-x: hidden;    overflow-y: hidden;}.flexParent {    display: flex;    justify-content: space-between;}.flexParentInvisible {    display: flex;    justify-content: space-between;}.flexElement {    flex-basis: 100%;    max-width: 100%;}.flexPanel {    flex-basis: 100%;    max-width: 100%;}.flex-grid {    display: flex;}</style><style type="text/css">.diagram {    min-height: 400px;    width: 100%;    height: 100%;    border: 0px solid unset;}.vis-network:focus {    outline: none;}</style><script type="text/javascript">var diagramTracker = {};</script></head><body><div class="main-section"><div id="anchor-o3s8pkz" class="flexPanel overflowHidden defaultPanel"><div class="diagramWrapper"><div class="diagram" style="position:relative;width:3000px;height:2000px"><div class="diagram diagramObject" style="position:absolute" id="Diagram-pzkg7ers"></div></div><div class="diagramLoadingBar" id="Diagram-pzkg7ers-diagramLoadingBar"><div class="diagramOuterBorder"><div class="diagramText" id="Diagram-pzkg7ers-diagramText">0%</div><div class="diagramBorder"><div class="diagramBar" id="Diagram-pzkg7ers-diagramBar"></div></div></div></div></div></div><script>// create an array with nodes
+var nodes = new vis.DataSet([{
+"id":"StartSelector",
+"label":"StartSelector",
+"title":"StartSelector",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeError",
+"label":"OobeError",
+"title":"OobeError",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeDiagnostics",
+"label":"OobeDiagnostics",
+"title":"OobeDiagnostics",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeExportDiagnostics",
+"label":"OobeExportDiagnostics",
+"title":"OobeExportDiagnostics",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutoPilotPrefetch",
+"label":"AutoPilotPrefetch",
+"title":"AutoPilotPrefetch",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeLanguage",
+"label":"OobeLanguage",
+"title":"OobeLanguage",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeLanguageAutoPilot",
+"label":"OobeLanguageAutoPilot",
+"title":"OobeLanguageAutoPilot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEnterpriseProvisioning",
+"label":"OobeEnterpriseProvisioning",
+"title":"OobeEnterpriseProvisioning",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeProvisioningEntry",
+"label":"OobeProvisioningEntry",
+"title":"OobeProvisioningEntry",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveOobeZdp",
+"label":"AutopilotWhiteGloveOobeZdp",
+"title":"AutopilotWhiteGloveOobeZdp",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveUpdate",
+"label":"AutopilotWhiteGloveUpdate",
+"title":"AutopilotWhiteGloveUpdate",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveReboot",
+"label":"AutopilotWhiteGloveReboot",
+"title":"AutopilotWhiteGloveReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveLanding",
+"label":"AutopilotWhiteGloveLanding",
+"title":"AutopilotWhiteGloveLanding",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveDeviceRename",
+"label":"AutopilotWhiteGloveDeviceRename",
+"title":"AutopilotWhiteGloveDeviceRename",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveDeviceRenameReboot",
+"label":"AutopilotWhiteGloveDeviceRenameReboot",
+"title":"AutopilotWhiteGloveDeviceRenameReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotWhiteGloveResult",
+"label":"AutopilotWhiteGloveResult",
+"title":"AutopilotWhiteGloveResult",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeProvisioningStatus",
+"label":"OobeProvisioningStatus",
+"title":"OobeProvisioningStatus",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeProvisioningReboot",
+"label":"OobeProvisioningReboot",
+"title":"OobeProvisioningReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeRegion",
+"label":"OobeRegion",
+"title":"OobeRegion",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeRegionAutoPilot",
+"label":"OobeRegionAutoPilot",
+"title":"OobeRegionAutoPilot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeKeyboard",
+"label":"OobeKeyboard",
+"title":"OobeKeyboard",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWireless",
+"label":"OobeWireless",
+"title":"OobeWireless",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCaptivePortal",
+"label":"OobeCaptivePortal",
+"title":"OobeCaptivePortal",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeNetworkLogging",
+"label":"OobeNetworkLogging",
+"title":"OobeNetworkLogging",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeRequiredServiceEvent",
+"label":"OobeRequiredServiceEvent",
+"title":"OobeRequiredServiceEvent",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotActivation",
+"label":"AutopilotActivation",
+"title":"AutopilotActivation",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeZdp",
+"label":"OobeZdp",
+"title":"OobeZdp",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotUpdate",
+"label":"AutopilotUpdate",
+"title":"AutopilotUpdate",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutoPilotDeviceRename",
+"label":"AutoPilotDeviceRename",
+"title":"AutoPilotDeviceRename",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"Reboot",
+"label":"Reboot",
+"title":"Reboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWirelessAfterZDPReboot",
+"label":"OobeWirelessAfterZDPReboot",
+"title":"OobeWirelessAfterZDPReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCaptivePortalAfterZDPReboot",
+"label":"OobeCaptivePortalAfterZDPReboot",
+"title":"OobeCaptivePortalAfterZDPReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutoPilotVetoESTS",
+"label":"AutoPilotVetoESTS",
+"title":"AutoPilotVetoESTS",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutoPilotVetoReboot",
+"label":"AutoPilotVetoReboot",
+"title":"AutoPilotVetoReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEnterpriseProvisioningAfterConnectivity",
+"label":"OobeEnterpriseProvisioningAfterConnectivity",
+"title":"OobeEnterpriseProvisioningAfterConnectivity",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeProvisioningRebootAfterConnectivity",
+"label":"OobeProvisioningRebootAfterConnectivity",
+"title":"OobeProvisioningRebootAfterConnectivity",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEnableDriverUpdate",
+"label":"OobeEnableDriverUpdate",
+"title":"OobeEnableDriverUpdate",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEula",
+"label":"OobeEula",
+"title":"OobeEula",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeDeviceName",
+"label":"OobeDeviceName",
+"title":"OobeDeviceName",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeDeviceNameReboot",
+"label":"OobeDeviceNameReboot",
+"title":"OobeDeviceNameReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWirelessAfterDeviceNameReboot",
+"label":"OobeWirelessAfterDeviceNameReboot",
+"title":"OobeWirelessAfterDeviceNameReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCaptivePortalAfterDeviceNameReboot",
+"label":"OobeCaptivePortalAfterDeviceNameReboot",
+"title":"OobeCaptivePortalAfterDeviceNameReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCloudContentHydrant",
+"label":"OobeCloudContentHydrant",
+"title":"OobeCloudContentHydrant",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeRetailDemoEntry",
+"label":"OobeRetailDemoEntry",
+"title":"OobeRetailDemoEntry",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotPostReset",
+"label":"AutopilotPostReset",
+"title":"AutopilotPostReset",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeDomainJoin",
+"label":"OobeDomainJoin",
+"title":"OobeDomainJoin",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeDomainJoinReboot",
+"label":"OobeDomainJoinReboot",
+"title":"OobeDomainJoinReboot",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressAfterDJ",
+"label":"MDMProgressAfterDJ",
+"title":"MDMProgressAfterDJ",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressAfterDJRefactored",
+"label":"MDMProgressAfterDJRefactored",
+"title":"MDMProgressAfterDJRefactored",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeIDPS",
+"label":"OobeIDPS",
+"title":"OobeIDPS",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotOfflineCheck",
+"label":"AutopilotOfflineCheck",
+"title":"AutopilotOfflineCheck",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeAAD",
+"label":"OobeAAD",
+"title":"OobeAAD",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeAADCloudBackupRestore",
+"label":"OobeAADCloudBackupRestore",
+"title":"OobeAADCloudBackupRestore",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"AutopilotUpdatePostEnrollment",
+"label":"AutopilotUpdatePostEnrollment",
+"title":"AutopilotUpdatePostEnrollment",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"RebootZtd",
+"label":"RebootZtd",
+"title":"RebootZtd",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWirelessAfterRebootZtd",
+"label":"OobeWirelessAfterRebootZtd",
+"title":"OobeWirelessAfterRebootZtd",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCaptivePortalAfterRebootZtd",
+"label":"OobeCaptivePortalAfterRebootZtd",
+"title":"OobeCaptivePortalAfterRebootZtd",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressForPlugAndForget",
+"label":"MDMProgressForPlugAndForget",
+"title":"MDMProgressForPlugAndForget",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressForPlugAndForgetRefactored",
+"label":"MDMProgressForPlugAndForgetRefactored",
+"title":"MDMProgressForPlugAndForgetRefactored",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"RebootZtdForPlugAndForget",
+"label":"RebootZtdForPlugAndForget",
+"title":"RebootZtdForPlugAndForget",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWirelessAfterRebootZtdForPlugAndForget",
+"label":"OobeWirelessAfterRebootZtdForPlugAndForget",
+"title":"OobeWirelessAfterRebootZtdForPlugAndForget",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeCaptivePortalAfterRebootZtdForPlugAndForget",
+"label":"OobeCaptivePortalAfterRebootZtdForPlugAndForget",
+"title":"OobeCaptivePortalAfterRebootZtdForPlugAndForget",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"DevicePreparationPageAfterAAD",
+"label":"DevicePreparationPageAfterAAD",
+"title":"DevicePreparationPageAfterAAD",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressAfterAAD",
+"label":"MDMProgressAfterAAD",
+"title":"MDMProgressAfterAAD",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"MDMProgressAfterAADRefactored",
+"label":"MDMProgressAfterAADRefactored",
+"title":"MDMProgressAfterAADRefactored",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"EarlyOobeNDUP",
+"label":"EarlyOobeNDUP",
+"title":"EarlyOobeNDUP",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"EarlyRebootNDUP",
+"label":"EarlyRebootNDUP",
+"title":"EarlyRebootNDUP",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSAValueProp",
+"label":"OobeMSAValueProp",
+"title":"OobeMSAValueProp",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSA",
+"label":"OobeMSA",
+"title":"OobeMSA",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeWindowsAccountSyncConsent",
+"label":"OobeWindowsAccountSyncConsent",
+"title":"OobeWindowsAccountSyncConsent",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSAHello",
+"label":"OobeMSAHello",
+"title":"OobeMSAHello",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSANGCEnrollWithHello",
+"label":"OobeMSANGCEnrollWithHello",
+"title":"OobeMSANGCEnrollWithHello",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSANGCEnroll",
+"label":"OobeMSANGCEnroll",
+"title":"OobeMSANGCEnroll",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSAOfferStatic",
+"label":"OobeMSAOfferStatic",
+"title":"OobeMSAOfferStatic",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeLocal",
+"label":"OobeLocal",
+"title":"OobeLocal",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeLocalHello",
+"label":"OobeLocalHello",
+"title":"OobeLocalHello",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeLocalNGC",
+"label":"OobeLocalNGC",
+"title":"OobeLocalNGC",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobePreSettingsExperimentation",
+"label":"OobePreSettingsExperimentation",
+"title":"OobePreSettingsExperimentation",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSAPrivacySettings",
+"label":"OobeMSAPrivacySettings",
+"title":"OobeMSAPrivacySettings",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeSettingsSelector",
+"label":"OobeSettingsSelector",
+"title":"OobeSettingsSelector",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeSettings",
+"label":"OobeSettings",
+"title":"OobeSettings",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeSettingsMultiPage",
+"label":"OobeSettingsMultiPage",
+"title":"OobeSettingsMultiPage",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeSettingsAadc",
+"label":"OobeSettingsAadc",
+"title":"OobeSettingsAadc",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeUpdateSettings",
+"label":"OobeUpdateSettings",
+"title":"OobeUpdateSettings",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeSnapshotCapture",
+"label":"OobeSnapshotCapture",
+"title":"OobeSnapshotCapture",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSACloudBackupRestore",
+"label":"OobeMSACloudBackupRestore",
+"title":"OobeMSACloudBackupRestore",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeMSACloudBackupRestoreUX",
+"label":"OobeMSACloudBackupRestoreUX",
+"title":"OobeMSACloudBackupRestoreUX",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobePrepEnduserSession",
+"label":"OobePrepEnduserSession",
+"title":"OobePrepEnduserSession",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeOemRegistration",
+"label":"OobeOemRegistration",
+"title":"OobeOemRegistration",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeUserIntent",
+"label":"OobeUserIntent",
+"title":"OobeUserIntent",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobePostUserIntentExperimentation",
+"label":"OobePostUserIntentExperimentation",
+"title":"OobePostUserIntentExperimentation",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobePhonePairing",
+"label":"OobePhonePairing",
+"title":"OobePhonePairing",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeOneDrive",
+"label":"OobeOneDrive",
+"title":"OobeOneDrive",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEdgeSyncConsent",
+"label":"OobeEdgeSyncConsent",
+"title":"OobeEdgeSyncConsent",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeOffice",
+"label":"OobeOffice",
+"title":"OobeOffice",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeGamepass",
+"label":"OobeGamepass",
+"title":"OobeGamepass",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobePostGamepassExperimentation",
+"label":"OobePostGamepassExperimentation",
+"title":"OobePostGamepassExperimentation",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeTelemetryFlush",
+"label":"OobeTelemetryFlush",
+"title":"OobeTelemetryFlush",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeNDUP",
+"label":"OobeNDUP",
+"title":"OobeNDUP",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"RebootNDUP",
+"label":"RebootNDUP",
+"title":"RebootNDUP",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeExit",
+"label":"OobeExit",
+"title":"OobeExit",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeEarlyExitOnFailure",
+"label":"OobeEarlyExitOnFailure",
+"title":"OobeEarlyExitOnFailure",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"OobeNetworkLossError",
+"label":"OobeNetworkLossError",
+"title":"OobeNetworkLossError",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"ReconnectionEntry",
+"label":"ReconnectionEntry",
+"title":"ReconnectionEntry",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"ReconnectCaptivePortal",
+"label":"ReconnectCaptivePortal",
+"title":"ReconnectCaptivePortal",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"InPlaceResume",
+"label":"InPlaceResume",
+"title":"InPlaceResume",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxSetup",
+"label":"rdxSetup",
+"title":"rdxSetup",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxShutdowns",
+"label":"rdxShutdowns",
+"title":"rdxShutdowns",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxSecurity",
+"label":"rdxSecurity",
+"title":"rdxSecurity",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxAdmin",
+"label":"rdxAdmin",
+"title":"rdxAdmin",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxMsa",
+"label":"rdxMsa",
+"title":"rdxMsa",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"msaSignIn",
+"label":"msaSignIn",
+"title":"msaSignIn",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}, {
+"id":"rdxLocal",
+"label":"rdxLocal",
+"title":"rdxLocal",
+"shape":"icon",
+"icon":{
+"weight":"bold",
+"code":"\uf108",
+"face":'"Font Awesome 5 Free"'}}]); 
+// create an array with edges
+var edges = new vis.DataSet([{
+"from":"StartSelector",
+"to":"AutoPilotPrefetch"}, {
+}, {
+"from":"AutoPilotPrefetch",
+"to":"OobeLanguage"}, {
+}, {
+"from":"OobeLanguage",
+"to":"OobeLanguageAutoPilot"}, {
+}, {
+"from":"OobeLanguageAutoPilot",
+"to":"OobeRegion"}, {
+}, {
+"from":"OobeProvisioningEntry",
+"to":"OobeProvisioningStatus"}, {
+}, {
+"from":"AutopilotWhiteGloveOobeZdp",
+"to":"AutopilotWhiteGloveUpdate"}, {
+}, {
+"from":"AutopilotWhiteGloveUpdate",
+"to":"AutopilotWhiteGloveReboot"}, {
+}, {
+"from":"AutopilotWhiteGloveReboot",
+"to":"AutopilotWhiteGloveLanding"}, {
+}, {
+"from":"AutopilotWhiteGloveLanding",
+"to":"AutopilotWhiteGloveDeviceRename"}, {
+}, {
+"from":"AutopilotWhiteGloveDeviceRename",
+"to":"AutopilotWhiteGloveDeviceRenameReboot"}, {
+}, {
+"from":"AutopilotWhiteGloveDeviceRenameReboot",
+"to":"MDMProgressForPlugAndForget"}, {
+}, {
+"from":"OobeProvisioningStatus",
+"to":"OobeLanguage"}, {
+}, {
+"from":"OobeProvisioningReboot",
+"to":"OobeProvisioningStatus"}, {
+}, {
+"from":"OobeRegion",
+"to":"OobeRegionAutoPilot"}, {
+}, {
+"from":"OobeRegionAutoPilot",
+"to":"OobeKeyboard"}, {
+}, {
+"from":"OobeKeyboard",
+"to":"OobeWireless"}, {
+}, {
+"from":"OobeWireless",
+"to":"OobeNetworkLogging"}, {
+}, {
+"from":"OobeCaptivePortal",
+"to":"OobeWireless"}, {
+}, {
+"from":"OobeNetworkLogging",
+"to":"OobeRequiredServiceEvent"}, {
+}, {
+"from":"OobeRequiredServiceEvent",
+"to":"AutopilotActivation"}, {
+}, {
+"from":"AutopilotActivation",
+"to":"OobeZdp"}, {
+}, {
+"from":"OobeZdp",
+"to":"AutopilotUpdate"}, {
+}, {
+"from":"AutopilotUpdate",
+"to":"AutoPilotDeviceRename"}, {
+}, {
+"from":"AutoPilotDeviceRename",
+"to":"Reboot"}, {
+}, {
+"from":"Reboot",
+"to":"OobeWirelessAfterZDPReboot"}, {
+}, {
+"from":"OobeWirelessAfterZDPReboot",
+"to":"AutoPilotVetoESTS"}, {
+}, {
+"from":"OobeCaptivePortalAfterZDPReboot",
+"to":"OobeWirelessAfterZDPReboot"}, {
+}, {
+"from":"AutoPilotVetoESTS",
+"to":"OobeEnterpriseProvisioningAfterConnectivity"}, {
+}, {
+"from":"AutoPilotVetoReboot",
+"to":"OobeLanguage"}, {
+}, {
+"from":"OobeEnterpriseProvisioningAfterConnectivity",
+"to":"OobeProvisioningRebootAfterConnectivity"}, {
+}, {
+"from":"OobeProvisioningRebootAfterConnectivity",
+"to":"OobeEnableDriverUpdate"}, {
+}, {
+"from":"OobeEnableDriverUpdate",
+"to":"OobeEula"}, {
+}, {
+"from":"OobeEula",
+"to":"OobeDeviceName"}, {
+}, {
+"from":"OobeDeviceName",
+"to":"OobeDeviceNameReboot"}, {
+}, {
+"from":"OobeDeviceNameReboot",
+"to":"OobeCloudContentHydrant"}, {
+}, {
+"from":"OobeWirelessAfterDeviceNameReboot",
+"to":"OobeCloudContentHydrant"}, {
+}, {
+"from":"OobeCaptivePortalAfterDeviceNameReboot",
+"to":"OobeWirelessAfterDeviceNameReboot"}, {
+}, {
+"from":"OobeCloudContentHydrant",
+"to":"OobeRetailDemoEntry"}, {
+}, {
+"from":"OobeRetailDemoEntry",
+"to":"AutopilotPostReset"}, {
+}, {
+"from":"AutopilotPostReset",
+"to":"OobeDomainJoin"}, {
+}, {
+"from":"OobeDomainJoin",
+"to":"OobeIDPS"}, {
+}, {
+"from":"OobeDomainJoinReboot",
+"to":"MDMProgressAfterDJ"}, {
+}, {
+"from":"MDMProgressAfterDJ",
+"to":"MDMProgressAfterDJRefactored"}, {
+}, {
+"from":"MDMProgressAfterDJRefactored",
+"to":"OobeSettingsSelector"}, {
+}, {
+"from":"OobeIDPS",
+"to":"OobeLocal"}, {
+}, {
+"from":"AutopilotOfflineCheck",
+"to":"OobeLocal"}, {
+}, {
+"from":"OobeAAD",
+"to":"OobeAADCloudBackupRestore"}, {
+}, {
+"from":"OobeAADCloudBackupRestore",
+"to":"AutopilotUpdatePostEnrollment"}, {
+}, {
+"from":"AutopilotUpdatePostEnrollment",
+"to":"RebootZtd"}, {
+}, {
+"from":"RebootZtd",
+"to":"OobeWirelessAfterRebootZtd"}, {
+}, {
+"from":"OobeWirelessAfterRebootZtd",
+"to":"DevicePreparationPageAfterAAD"}, {
+}, {
+"from":"OobeCaptivePortalAfterRebootZtd",
+"to":"OobeWirelessAfterRebootZtd"}, {
+}, {
+"from":"MDMProgressForPlugAndForget",
+"to":"MDMProgressForPlugAndForgetRefactored"}, {
+}, {
+"from":"MDMProgressForPlugAndForgetRefactored",
+"to":"OobeSettingsSelector"}, {
+}, {
+"from":"RebootZtdForPlugAndForget",
+"to":"OobeWirelessAfterRebootZtdForPlugAndForget"}, {
+}, {
+"from":"OobeWirelessAfterRebootZtdForPlugAndForget",
+"to":"MDMProgressForPlugAndForget"}, {
+}, {
+"from":"OobeCaptivePortalAfterRebootZtdForPlugAndForget",
+"to":"OobeWirelessAfterRebootZtdForPlugAndForget"}, {
+}, {
+"from":"DevicePreparationPageAfterAAD",
+"to":"MDMProgressAfterAAD"}, {
+}, {
+"from":"MDMProgressAfterAAD",
+"to":"MDMProgressAfterAADRefactored"}, {
+}, {
+"from":"MDMProgressAfterAADRefactored",
+"to":"OobeSettingsSelector"}, {
+}, {
+"from":"EarlyOobeNDUP",
+"to":"EarlyRebootNDUP"}, {
+}, {
+"from":"EarlyRebootNDUP",
+"to":"OobeMSAValueProp"}, {
+}, {
+"from":"OobeMSAValueProp",
+"to":"OobeMSA"}, {
+}, {
+"from":"OobeMSA",
+"to":"OobeWindowsAccountSyncConsent"}, {
+}, {
+"from":"OobeWindowsAccountSyncConsent",
+"to":"OobeMSAHello"}, {
+}, {
+"from":"OobeMSAHello",
+"to":"OobeMSANGCEnrollWithHello"}, {
+}, {
+"from":"OobeMSANGCEnrollWithHello",
+"to":"OobePreSettingsExperimentation"}, {
+}, {
+"from":"OobeMSANGCEnroll",
+"to":"OobePreSettingsExperimentation"}, {
+}, {
+"from":"OobeMSAOfferStatic",
+"to":"OobeMSA"}, {
+}, {
+"from":"OobeLocal",
+"to":"OobeLocalHello"}, {
+}, {
+"from":"OobeLocalHello",
+"to":"OobeLocalNGC"}, {
+}, {
+"from":"OobeLocalNGC",
+"to":"OobePreSettingsExperimentation"}, {
+}, {
+"from":"OobePreSettingsExperimentation",
+"to":"OobeMSAPrivacySettings"}, {
+}, {
+"from":"OobeMSAPrivacySettings",
+"to":"OobeSettingsSelector"}, {
+}, {
+"from":"OobeSettingsSelector",
+"to":"OobeSettings"}, {
+}, {
+"from":"OobeSettings",
+"to":"OobeUpdateSettings"}, {
+}, {
+"from":"OobeSettingsMultiPage",
+"to":"OobeUpdateSettings"}, {
+}, {
+"from":"OobeSettingsAadc",
+"to":"OobeUpdateSettings"}, {
+}, {
+"from":"OobeUpdateSettings",
+"to":"OobeSnapshotCapture"}, {
+}, {
+"from":"OobeSnapshotCapture",
+"to":"OobeMSACloudBackupRestore"}, {
+}, {
+"from":"OobeMSACloudBackupRestore",
+"to":"OobeMSACloudBackupRestoreUX"}, {
+}, {
+"from":"OobeMSACloudBackupRestoreUX",
+"to":"OobePrepEnduserSession"}, {
+}, {
+"from":"OobeOemRegistration",
+"to":"OobeUserIntent"}, {
+}, {
+"from":"OobeUserIntent",
+"to":"OobePostUserIntentExperimentation"}, {
+}, {
+"from":"OobePostUserIntentExperimentation",
+"to":"OobePhonePairing"}, {
+}, {
+"from":"OobePhonePairing",
+"to":"OobeOneDrive"}, {
+}, {
+"from":"OobeOneDrive",
+"to":"OobeEdgeSyncConsent"}, {
+}, {
+"from":"OobeEdgeSyncConsent",
+"to":"OobeOffice"}, {
+}, {
+"from":"OobeOffice",
+"to":"OobeGamepass"}, {
+}, {
+"from":"OobeGamepass",
+"to":"OobePostGamepassExperimentation"}, {
+}, {
+"from":"OobePostGamepassExperimentation",
+"to":"OobeTelemetryFlush"}, {
+}, {
+"from":"OobeTelemetryFlush",
+"to":"OobeNDUP"}, {
+}, {
+"from":"OobeNDUP",
+"to":"RebootNDUP"}, {
+}, {
+"from":"RebootNDUP",
+"to":"OobeExit"}, {
+}, {
+"from":"OobeNetworkLossError",
+"to":"ReconnectionEntry"}, {
+}, {
+"from":"ReconnectionEntry",
+"to":"InPlaceResume"}, {
+}, {
+"from":"ReconnectCaptivePortal",
+"to":"ReconnectionEntry"}, {
+}, {
+"from":"rdxSetup",
+"to":"rdxSecurity"}, {
+}, {
+"from":"rdxShutdowns",
+"to":"rdxSecurity"}, {
+}, {
+"from":"rdxSecurity",
+"to":"rdxMsa"}, {
+}, {
+"from":"rdxAdmin",
+"to":"rdxLocal"}, {
+}, {
+"from":"rdxMsa",
+"to":"rdxLocal"}, {
+}]); 
+// create a network
+var container = document.getElementById('Diagram-pzkg7ers'); 
+var data = { 
+   nodes: nodes, 
+   edges: edges
+ }; 
+var options = {
+  "autoResize": true,
+  "layout": {
+    "randomSeed": 0
+  },
+  "physics": {
+    "enabled": true,
+    "solver": "barnesHut"
+  },
+  "interaction": {
+    "hover": true
+  },
+  "nodes": {
+    "borderWidth": 1,
+    "font": {
+      "color": "#000000",
+      "multi": "true"
+    },
+    "size": 16
+  },
+  "edges": {
+    "arrows": {
+      "to": {
+        "enabled": true,
+        "type": "arrow"
+      },
+      "from": {
+        "enabled": false
+      }
+    },
+    "color": {
+      "color": "#8a2be2"
+    }
+  }
+}; 
+var network = loadDiagramWithFonts(container, data, options, 'Diagram-pzkg7ers', true , true);
+diagramTracker['Diagram-pzkg7ers'] = network;
+
+</script></div><footer><script type="text/javascript">function escapeRegExp(string) {
+    return string.toString().replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+};</script></footer></body></html>
